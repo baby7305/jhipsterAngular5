@@ -1,0 +1,25 @@
+{
+    "test2App": {
+        "student" : {
+            "home": {
+                "title": "Students",
+                "createLabel": "Create a new Student",
+                "createOrEditLabel": "Create or edit a Student"
+            },
+            "created": "A new Student is created with identifier {{ param }}",
+            "updated": "A Student is updated with identifier {{ param }}",
+            "deleted": "A Student is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Student {{ id }}?"
+            },
+            "detail": {
+                "title": "Student"
+            },
+            "sname": "Sname",
+            "sex": "Sex",
+            "age": "Age",
+            "teacher": "Teacher",
+            "teacher1": "Teacher 1"
+        }
+    }
+}

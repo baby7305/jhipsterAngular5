@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span jhiTranslate="test2App.teacher.home.title">Teachers</span>
+        <button class="btn btn-primary float-right jh-create-entity create-teacher" [routerLink]="['/', { outlets: { popup: ['teacher-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="test2App.teacher.home.createLabel">
+            Create new Teacher
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="teachers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="test2App.teacher.tname">Tname</span></th>
+            <th><span jhiTranslate="test2App.teacher.sex">Sex</span></th>
+            <th><span jhiTranslate="test2App.teacher.age">Age</span></th>
+            <th><span jhiTranslate="test2App.teacher.student1">Student 1</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let teacher of teachers ;trackBy: trackId">
+                <td><a [routerLink]="['../teacher', teacher.id ]">{{teacher.id}}</a></td>
+                <td>{{teacher.tname}}</td>
+                <td>{{teacher.sex}}</td>
+                <td>{{teacher.age}}</td>
+                <td>
+                    <span *ngFor="let student1 of teacher.student1S; let last = last">
+                            <a class="form-control-static" [routerLink]="['../student', student1?.id ]">{{student1.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../teacher', teacher.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'teacher/'+ teacher.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'teacher/'+ teacher.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+
+<div *ngIf="student">
+    <h2><span jhiTranslate="test2App.student.detail.title">Student</span> {{student.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="test2App.student.sname">Sname</span></dt>
+        <dd>
+            <span>{{student.sname}}</span>
+        </dd>
+        <dt><span jhiTranslate="test2App.student.sex">Sex</span></dt>
+        <dd>
+            <span>{{student.sex}}</span>
+        </dd>
+        <dt><span jhiTranslate="test2App.student.age">Age</span></dt>
+        <dd>
+            <span>{{student.age}}</span>
+        </dd>
+        <dt><span jhiTranslate="test2App.student.teacher">Teacher</span></dt>
+        <dd>
+            <span *ngFor="let teacher of student.teachers; let last = last">
+                <a [routerLink]="['/teacher', teacher?.id ]">{{teacher.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'student/'+ student.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

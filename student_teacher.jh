@@ -1,0 +1,20 @@
+entity Student
+{
+sname String,
+sex String,
+age Integer
+}
+entity Teacher
+{
+tname String,
+sex String,
+age Integer
+}
+relationship ManyToMany
+{
+Student{Teacher} to Teacher{Student}
+}
+relationship ManyToMany
+{
+Teacher{Student1} to Student{Teacher1}
+}
